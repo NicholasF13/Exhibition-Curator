@@ -7,6 +7,7 @@ import Exhibition from './Components/Lists/Exhibition'
 import ArtworkDetail from './Components/ArtworkDetail'
 
 function App() {
+    
     const [collection, setCollection] = useState(() => {
         const savedCollection = localStorage.getItem('collection')
         return savedCollection ? JSON.parse(savedCollection) : []

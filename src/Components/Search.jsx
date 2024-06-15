@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { fetchArtworksMet, fetchArtworksEuropeana } from '../api'
 
-
 const eras = [
     { name: 'Ancient', startYear: -Infinity, endYear: 500 },
     { name: 'Medieval', startYear: 500, endYear: 1500 },
@@ -10,7 +9,7 @@ const eras = [
     { name: 'Baroque', startYear: 1600, endYear: 1750 },
     { name: 'Neoclassical', startYear: 1750, endYear: 1850 },
     { name: 'Modern', startYear: 1850, endYear: Infinity }
-];
+]
 
 function normalizeArtworkData(artworks, source) {
     switch (source) {
@@ -48,15 +47,22 @@ function normalizeArtworkData(artworks, source) {
 const extractUniqueIdentifier = (europeanaId) => {
     const parts = europeanaId.split('/')
     return parts[parts.length - 1]
-};
+}
 
 const Search = ({ handleAddToCollection }) => {
     const [parameters, setParameters] = useState('')
     const [artworks, setArtworks] = useState([])
     const [selectedEra, setSelectedEra] = useState(null)
     const [sortOrder, setSortOrder] = useState('asc')
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState('')
+    const [noResults, setNoResults] = useState(false)
 
     const handleSearch = () => {
+        setLoading(true)
+        setError('')
+        setNoResults(false)
+
         Promise.all([fetchArtworksMet(parameters), fetchArtworksEuropeana(parameters)])
             .then(([artworksMet, artworksEuropeana]) => {
                 const normArtworksMet = normalizeArtworkData(artworksMet, 'MET')
@@ -71,9 +77,16 @@ const Search = ({ handleAddToCollection }) => {
 
                 const sortedArtworks = sortArtworksByYear(mergedArtworks)
                 setArtworks(sortedArtworks)
+                setLoading(false)
+
+                if (sortedArtworks.length === 0) {
+                    setNoResults(true)
+                }
             })
             .catch(err => {
                 console.error('Error fetching artworks', err)
+                setError('Error fetching artworks. Please try again later.')
+                setLoading(false)
             })
     }
 
@@ -121,6 +134,10 @@ const Search = ({ handleAddToCollection }) => {
                 <option value="asc">Ascending</option>
                 <option value="desc">Descending</option>
             </select>
+
+            {loading && <p>Loading...</p>}
+            {error && <p className="error">{error}</p>}
+            {noResults && <p>No results found.</p>}
 
             <div className="artworks">
                 {artworks.map((artwork) => (

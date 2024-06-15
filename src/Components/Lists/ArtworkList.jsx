@@ -13,14 +13,9 @@ function ArtworkList({ artworks, handleAddToExhibition, handleRemove }) {
                     <div className="artworkDetails">
                         <p className="artworkTitle">{artwork.title}</p>
                         {artwork.year && (
-                            <p className="artworkYear">Year: {artwork.year < 0 ? `${Math.abs(artwork.year)} BC` : artwork.year}</p>
+                            <p className="artworkYear">ca. {artwork.year < 0 ? `${Math.abs(artwork.year)} BC` : artwork.year}</p>
                         )}
                     </div>
-                    {artwork.link && (
-                        <a href={artwork.link} target="_blank" rel="noopener noreferrer" className="viewMoreLink">
-                            View More
-                        </a>
-                    )}
                     <div className="artworkActions">
                         {handleAddToExhibition && (
                             <button className="actionButton" onClick={() => handleAddToExhibition(artwork)}>Add to Exhibition</button>
