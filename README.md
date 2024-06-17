@@ -51,7 +51,7 @@ This should provide a link in the form of : http://localhost:xxxx/ where x will 
 
 ## Guide to using the App
 
-1. On the home page, you will find a search box as well as a drop down menu to select the era of art you want to search through, if any. Once you have entered a search term & era if necessary, click the search button to display the results.
+1. On the home page, you will find a search box as well as a drop down menu to select the era of art you want to search through, if any. Once you have entered a search term & era if necessary, click the search button to display the results. You may also sort the results by year using the dropdown menu.
 
 2. You can add artworks from the displayed results to a personal collection for later viewing by clicking 'Add to Collection' next to the specific artwork. To view Artworks you have added to your collection, click the Collection tab on the top menu of the website.
 
