@@ -6,22 +6,25 @@ Users are able to able to click on artworks to view more information as well as 
 
 ## Requirements
 
-To run this application, it is necessary to have node.js installed as well as Visual Studio Code(VS code)
+To run this application, it is necessary to have the following programs installed: Git, Node.js & Visual Studio Code(VS code)
 
-1. To download Node.js, visit the following link below. Download & run the installer
+1. To download Git, visit the following link. Download & run the installer
+
+https://git-scm.com/downloads
+
+2. To download Node.js, visit the following link below. Download & run the installer
 
 https://nodejs.org/
 
-2. To download vscode, use the link below. Download & run the installer
+3. To download vscode, use the link below. Download & run the installer
 
 https://code.visualstudio.com/
 
-Once downloaded, open VS code & navigate to the top menu and click on 'Terminal' to open the terminal, which will be needed for the instructions below
 
 ## Instructions to run project locally
 
 
-1. With the terminal open, clone the repository using the following command: 
+1. Open VS code & navigate to the top menu and click on 'Terminal' to open the terminal. With the terminal open, clone the repository using the following command: 
 
 ```
  git clone https://github.com/NicholasF13/Exhibition-Curator.git
